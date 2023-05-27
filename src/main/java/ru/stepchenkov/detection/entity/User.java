@@ -1,10 +1,9 @@
 package ru.stepchenkov.detection.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.Hibernate;
-
-import java.util.Objects;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter

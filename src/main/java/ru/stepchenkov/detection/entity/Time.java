@@ -1,12 +1,12 @@
 package ru.stepchenkov.detection.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Objects;
 
 @Getter
 @Setter
