@@ -7,11 +7,9 @@ import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import org.opencv.core.*;
-import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.videoio.VideoCapture;
 import ru.stepchenkov.vision.type.FileType;
 import ru.stepchenkov.vision.type.HaarcascadeType;
 
@@ -29,7 +27,7 @@ public class Vision {
     public static void main(String[] args) {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         Vision main = new Vision();
-        main.findOnVideo();
+        //main.findOnVideo();
 
     }
 
@@ -148,34 +146,42 @@ public class Vision {
         return dotProductValue / (normA * normB);
     }
 
-    public void findOnVideo() {
+//    public void findOnVideo() {
+//
+//        // загрузка файла каскадного классификатора для обнаружения лиц
+//        CascadeClassifier faceDetector = new CascadeClassifier(HaarcascadeType.FRONTALFACE.get());
+//        VideoCapture camera = new VideoCapture(FileType.VIDEO.get());
+//        Mat frame = new Mat();
+//
+//        while (camera.read(frame)) {
+//
+//            Size frameSize = frame.size();
+//            double scale = 0.5; // уменьшение размера в половину
+//            Size scaledFrameSize = new Size(frameSize.width * scale, frameSize.height * scale);
+//            Mat scaledFrame = new Mat();
+//            Imgproc.resize(frame, scaledFrame, scaledFrameSize);
+//
+//
+//            // преобразование изображения в черно-белое
+//            Mat grayFrame = new Mat();
+//            Imgproc.cvtColor(scaledFrame, grayFrame, Imgproc.COLOR_BGR2GRAY);
+//
+//            // обнаружение лиц
+//            MatOfRect faceDetections = new MatOfRect();
+//            faceDetector.detectMultiScale(grayFrame, faceDetections);
+//
+//            // отрисовка прямоугольников вокруг лиц
+//            for (Rect rect : faceDetections.toArray()) {
+//                Imgproc.rectangle(scaledFrame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 0));
+//            }
+//
+//            // отображение кадра с прямоугольниками
+//            HighGui.imshow("Face Detection", scaledFrame);
+//            HighGui.waitKey(1);
+//
+//        }
+//    }
 
-        // загрузка файла каскадного классификатора для обнаружения лиц
-        CascadeClassifier faceDetector = new CascadeClassifier(HaarcascadeType.FRONTALFACE.get());
-        VideoCapture camera = new VideoCapture(FileType.VIDEO.get());
-        Mat frame = new Mat();
-
-        while (camera.read(frame)) {
-
-            // преобразование изображения в черно-белое
-            Mat grayFrame = new Mat();
-            Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2GRAY);
-
-            // обнаружение лиц
-            MatOfRect faceDetections = new MatOfRect();
-            faceDetector.detectMultiScale(grayFrame, faceDetections);
-
-            // отрисовка прямоугольников вокруг лиц
-            for (Rect rect : faceDetections.toArray()) {
-                Imgproc.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 0));
-            }
-
-            // отображение кадра с прямоугольниками
-            HighGui.imshow("Face Detection", frame);
-            HighGui.waitKey(1);
-
-        }
-    }
 
     private void test() throws IOException {
         Vision main = new Vision();

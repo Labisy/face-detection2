@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Видео и информация</title>
+    <meta charset="UTF-8">
+    <style>
+        #text-block {
+            display: none;
+        }
+
+        #text-block2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="video-container">
+    <video width="640" height="360" controls>
+        <source src="input.mp4" type="video/mp4">
+    </video>
+
+</div>
+<div>
+    <button id="button">Информация</button>
+    <button id="update_button">Обновить</button>
+</div>
+
+<div id="text-block">
+    <p>null</p>
+</div>
+<div id="text-block2">
+    <p id="in_text"></p>
+</div>
+
+<script>
+    const showTextButton = document.getElementById('button');
+    const textBlock = document.getElementById('text-block');
+
+    showTextButton.addEventListener('click', function () {
+        if (textBlock.style.display === 'none') {
+            textBlock.style.display = 'block';
+            showTextButton.innerHTML = 'Скрыть';
+        } else {
+            textBlock.style.display = 'none';
+            showTextButton.innerHTML = 'Информация';
+        }
+    });
+
+    const updateButton = document.getElementById('update_button');
+    const textBlock2 = document.getElementById('text-block2');
+    const t = document.getElementById('in_text');
+
+    updateButton.addEventListener('click', function () {
+        t.innerText = 'Неизвестный пользователь'
+        textBlock2.style.display = 'block';
+    });
+</script>
+</body>
+</html>

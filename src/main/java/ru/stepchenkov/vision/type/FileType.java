@@ -1,7 +1,7 @@
 package ru.stepchenkov.vision.type;
 
 public enum FileType {
-    VIDEO("src/main/resources/templates/test.mp4"),
+    VIDEO("src/main/resources/static/v/input.mp4"),
     NET_MODEL("C:/diplom/openFace-model")
     ;
 

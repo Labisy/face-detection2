@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Видео и информация</title>
+    <meta charset="UTF-8">
+    <style>
+        #text-block {
+            display: none;
+        }
+
+        #text-block2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="video-container">
+    <video width="640" height="360" controls>
+        <source src="output.mp4" type="video/mp4">
+    </video>
+
+</div>
+<div>
+    <button id="button">Информация</button>
+    <button id="update_button">Обновить</button>
+</div>
+
+<div id="text-block">
+    <p>Степченков Андрей Сергеевич</p>
+    <p>143</p>
+    <p>Рабочий</p>
+    <p>1</p>
+    <p>89537356392</p>
+    <p>2023-05-29</p>
+    <p id="time1">14:46</p>
+    <p id="time2">00:00</p>
+</div>
+
+<script>
+    const showTextButton = document.getElementById('button');
+    const textBlock = document.getElementById('text-block');
+    const t1 = document.getElementById('time1');
+
+    showTextButton.addEventListener('click', function () {
+        const now = new Date();
+        t1.innerText = now.toLocaleTimeString()
+        if (textBlock.style.display === 'none') {
+            textBlock.style.display = 'block';
+            showTextButton.innerHTML = 'Скрыть';
+        } else {
+            textBlock.style.display = 'none';
+            showTextButton.innerHTML = 'Информация';
+        }
+    });
+    const updateButton = document.getElementById('update_button');
+    const t = document.getElementById('time2');
+
+    updateButton.addEventListener('click', function () {
+        const now = new Date();
+        t.innerText = now.toLocaleTimeString()
+    });
+</script>
+</body>
+</html>
