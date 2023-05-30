@@ -17,22 +17,28 @@ public class Info {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @OneToOne
     @JoinColumn(name = "service_number")
     private User user;
+
     @OneToOne
     @JoinColumn(name = "dep_id")
     private Department dep;
+
     @OneToOne
     @JoinColumn(name = "photo_id")
     private Photo photo;
+
     @OneToMany
     @JoinColumn(name = "time_id")
     @ToString.Exclude
     private List<Time> time;
+
     @OneToOne
     @JoinColumn(name = "post_id")
     private Post post;
+
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 }

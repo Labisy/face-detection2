@@ -2,7 +2,13 @@ package ru.stepchenkov.rest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.stepchenkov.rest.entity.*;
+import ru.stepchenkov.rest.entity.Department;
+import ru.stepchenkov.rest.entity.Info;
+import ru.stepchenkov.rest.entity.Log;
+import ru.stepchenkov.rest.entity.Photo;
+import ru.stepchenkov.rest.entity.Post;
+import ru.stepchenkov.rest.entity.Time;
+import ru.stepchenkov.rest.entity.User;
 import ru.stepchenkov.rest.model.RegistrationModel;
 import ru.stepchenkov.rest.repo.*;
 
@@ -46,7 +52,7 @@ public class RegistrationService {
 
     private Photo getPhoto(RegistrationModel model) {
         Photo photo = new Photo();
-        photo.setImage(model.getPhotoId());
+        photo.setImage(model.getPhoto());
         return photo;
     }
 

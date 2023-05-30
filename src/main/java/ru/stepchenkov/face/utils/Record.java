@@ -1,4 +1,4 @@
-package ru.stepchenkov.face;
+package ru.stepchenkov.face.utils;
 
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;

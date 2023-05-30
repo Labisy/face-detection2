@@ -13,7 +13,7 @@ public class RegistrationModel {
     private String thirdName;
     private Integer serviceNumber;
     private Integer dep;
-    private byte[] photoId;
+    private byte[] photo;
     private LocalDate date;
     private String postName;
     private String phone;
@@ -26,7 +26,7 @@ public class RegistrationModel {
         this.thirdName = thirdName;
         this.serviceNumber = serviceNumber;
         this.dep = dep;
-        this.photoId = photoId;
+        this.photo = photoId;
         this.date = LocalDate.now();
         this.postName = postName;
         this.phone = phone;
