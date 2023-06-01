@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class StartComparing {
 
-    public void compareFace(String path1, String path2) {
+    public boolean compareFace(String path1, String path2) {
         // Загрузка фотографий для сравнения
         Mat image1 = Imgcodecs.imread("path/to/image1.jpg");
         Mat image2 = Imgcodecs.imread("path/to/image2.jpg");
@@ -23,10 +23,6 @@ public class StartComparing {
             throw new RuntimeException(e);
         }
 
-        if (result) {
-            System.out.println("Лица на фотографиях совпадают");
-        } else {
-            System.out.println("Лица на фотографиях не совпадают");
-        }
+        return result;
     }
 }

@@ -1,12 +1,14 @@
 package ru.stepchenkov.rest.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class RegistrationModel {
     private String firstName;
     private String lastName;
@@ -17,19 +19,5 @@ public class RegistrationModel {
     private LocalDate date;
     private String postName;
     private String phone;
-
-    public RegistrationModel(String firstName, String lastName, String thirdName,
-                             Integer serviceNumber, Integer dep, byte[] photoId,
-                             String postName, String phone) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.thirdName = thirdName;
-        this.serviceNumber = serviceNumber;
-        this.dep = dep;
-        this.photo = photoId;
-        this.date = LocalDate.now();
-        this.postName = postName;
-        this.phone = phone;
-    }
 
 }

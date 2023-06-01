@@ -8,6 +8,7 @@ class FaceDetection2ApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

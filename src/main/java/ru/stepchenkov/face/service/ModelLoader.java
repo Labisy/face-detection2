@@ -14,11 +14,14 @@ public class ModelLoader {
     private static final Logger LOGGER = Logger.getLogger(ModelLoader.class);
 
     public MultiLayerNetwork loadModel() throws IOException {
+        // Получение файла модели
         File modelFile = new File(FileType.NET_MODEL.get());
+        // Проверка существования файла модели
         if (!modelFile.exists()) {
             LOGGER.log(Level.ERROR, "Ошибка в получении натренированной модели");
             return null;
         }
+        // Восстановление многослойной нейронной сети из файла
         return ModelSerializer.restoreMultiLayerNetwork(modelFile);
     }
 }
