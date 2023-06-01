@@ -25,7 +25,7 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-/src/main/resources/templates/person_img
+/src/main/resources/templates/person_img/
 
 ### NetBeans ###
 /nbproject/private/
