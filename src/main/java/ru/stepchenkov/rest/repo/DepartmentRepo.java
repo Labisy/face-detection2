@@ -7,4 +7,5 @@ import ru.stepchenkov.rest.entity.Department;
 @Repository
 public interface DepartmentRepo extends CrudRepository<Department, Long> {
     Department findByDep(int value);
+    int deleteDepartmentByDep(int value);
 }

@@ -1,6 +1,7 @@
 package ru.stepchenkov.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.stepchenkov.rest.model.RegistrationModel;
@@ -14,9 +15,9 @@ public class RegistrationController {
     private RegistrationService registrationService;
 
     @PostMapping
-    public ResponseEntity<String> registration(@RequestBody RegistrationModel model) {
-        registrationService.registration(model);
-        return ResponseEntity.ok("");
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<RegistrationModel> registration(@RequestBody RegistrationModel model) {
+        return new ResponseEntity<>(registrationService.registration(model), HttpStatus.OK);
 
     }
 }

@@ -12,6 +12,7 @@ import ru.stepchenkov.rest.entity.User;
 import ru.stepchenkov.rest.model.RegistrationModel;
 import ru.stepchenkov.rest.repo.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,64 +33,70 @@ public class RegistrationService {
     @Autowired
     private LogRepo logRepo;
 
-    public void registration(RegistrationModel model) {
-        departmentRepo.save(getDepartment(model));
-        photoRepo.save(getPhoto(model));
-        timeRepo.save(getTime(model));
-        userRepo.save(getUser(model));
-        logRepo.save(getLog(model));
-        infoRepo.save(getInfo(model));
+    public RegistrationModel registration(RegistrationModel model) {
+        save(model);
+        return model;
+    }
+
+    public void save(RegistrationModel model) {
+        Department department = getDepartment(model);
+        Post post = getPost(model);
+        Photo photo = savePhoto(model);
+        Time time = saveTime();
+        User user = saveUser(model);
+        saveLog(user);
+        saveInfo(department, post, photo, user, time, model.getPhone());
     }
 
 
-    private Department getDepartment(RegistrationModel model) {
+    public Department getDepartment(RegistrationModel model) {
         return departmentRepo.findByDep(model.getDep());
     }
 
-    private Post getPost(RegistrationModel model) {
+    public Post getPost(RegistrationModel model) {
         return postRepo.getPostByPostName(model.getPostName());
     }
 
-    private Photo getPhoto(RegistrationModel model) {
+    public Photo savePhoto(RegistrationModel model) {
         Photo photo = new Photo();
         photo.setImage(model.getPhoto());
-        return photo;
+        return photoRepo.save(photo);
     }
 
-    private User getUser(RegistrationModel model) {
+    public User saveUser(RegistrationModel model) {
         User user = new User();
         user.setFirstName(model.getFirstName());
         user.setLastName(model.getLastName());
-        if (!model.getThirdName().equals("")) user.setThirdName(model.getThirdName());
+        if (model.getThirdName() != null) user.setThirdName(model.getThirdName());
         user.setServiceNumber(model.getServiceNumber());
 
-        return user;
+        return userRepo.save(user);
     }
 
-    private Time getTime(RegistrationModel model) {
+    public Time saveTime() {
         Time time = new Time();
-        time.setDate(model.getDate());
-        return time;
+        time.setDate(LocalDate.now());
+        return timeRepo.save(time);
     }
 
-    private Log getLog(RegistrationModel model) {
+    public Log saveLog(User user) {
         Log log = new Log();
-        log.setPersonId(getUser(model));
+        log.setPersonId(user);
         log.setTime(LocalDateTime.now());
         log.setInfo("Create new user");
-        return log;
+        return logRepo.save(log);
     }
 
-    private Info getInfo(RegistrationModel model) {
+    public Info saveInfo(Department dep, Post post, Photo photo, User user, Time time, String phone) {
         Info info = new Info();
-        info.setDep(getDepartment(model));
-        info.setPost(getPost(model));
-        info.setPhoto(getPhoto(model));
-        info.setUser(getUser(model));
-        info.setTime(List.of(getTime(model)));
-        info.setPhone(model.getPhone());
+        info.setDep(dep);
+        info.setPost(post);
+        info.setPhoto(photo);
+        info.setUser(user);
+        info.setTime(List.of(time));
+        info.setPhone(phone);
 
-        return info;
+        return infoRepo.save(info);
     }
 
 }

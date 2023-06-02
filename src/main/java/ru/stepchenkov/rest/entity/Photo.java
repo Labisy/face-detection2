@@ -14,8 +14,8 @@ public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Lob
+
     @Column(name = "image", nullable = false)
-    private byte[] image;
+    private String image;
 
 }
