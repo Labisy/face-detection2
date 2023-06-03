@@ -14,11 +14,11 @@ public class DepartmentService {
 
     public Department save(Department department) throws DepartmentAlreadyException {
         if (departmentRepo.findByDep(department.getDep()) != null)
-            throw new DepartmentAlreadyException("Такой пользователь уже создан");
+            throw new DepartmentAlreadyException("Такой отдел уже создан");
         return departmentRepo.save(department);
     }
 
-    public Integer deleteDepartment(int dep) throws DepartmentNotFoundException {
+    public int deleteDepartment(int dep) throws DepartmentNotFoundException {
         if (departmentRepo.findByDep(dep) == null)
             throw new DepartmentNotFoundException("Такого пользователя не существует");
         departmentRepo.deleteDepartmentByDep(dep);

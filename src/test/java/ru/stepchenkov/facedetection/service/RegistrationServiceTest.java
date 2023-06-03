@@ -1,6 +1,6 @@
 package ru.stepchenkov.facedetection.service;
 
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +11,7 @@ import ru.stepchenkov.rest.repo.*;
 import ru.stepchenkov.rest.service.RegistrationService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 class RegistrationServiceTest {
     @InjectMocks
@@ -61,10 +62,10 @@ class RegistrationServiceTest {
         Mockito.when(userRepo.save(ArgumentMatchers.any())).thenReturn(user);
         User response = registrationService.saveUser(model);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(1, response.getServiceNumber());
-        Assertions.assertEquals("Андрей", response.getFirstName());
-        Assertions.assertEquals("Степченков", response.getLastName());
+        Assertions.assertThat(response)
+                .isNotNull()
+                .extracting("serviceNumber", "firstName", "lastName")
+                .contains(1, "Андрей", "Степченков");
     }
 
     @Test
@@ -76,8 +77,10 @@ class RegistrationServiceTest {
         Mockito.when(departmentRepo.findByDep(143)).thenReturn(dep);
         Department response = registrationService.getDepartment(model);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(143, response.getDep());
+        Assertions.assertThat(response)
+                .isNotNull()
+                .extracting(Department::getDep)
+                .isEqualTo(143);
     }
 
     @Test
@@ -89,8 +92,10 @@ class RegistrationServiceTest {
         Mockito.when(photoRepo.save(ArgumentMatchers.any())).thenReturn(photo);
         Photo response = registrationService.savePhoto(model);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals("path", response.getImage());
+        Assertions.assertThat(response)
+                .isNotNull()
+                .extracting(Photo::getImage)
+                .isEqualTo("path");
     }
 
     @Test
@@ -102,8 +107,10 @@ class RegistrationServiceTest {
         Mockito.when(postRepo.getPostByPostName(ArgumentMatchers.any())).thenReturn(post);
         Post response = registrationService.getPost(model);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals("Рабочий", response.getPostName());
+        Assertions.assertThat(response)
+                .isNotNull()
+                .extracting(Post::getPostName)
+                .isEqualTo("Рабочий");
     }
 
     @Test
@@ -115,20 +122,41 @@ class RegistrationServiceTest {
         Mockito.when(timeRepo.save(ArgumentMatchers.any())).thenReturn(expected);
         Time response = registrationService.saveTime();
 
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals("2023-06-02", response.getDate().toString());
+        Assertions.assertThat(response)
+                .isNotNull()
+                .extracting(Time::getDate)
+                .isEqualTo(LocalDate.now());
+
     }
 
     @Test
     @DisplayName("save Info in database")
     void saveInfo() {
+        Department department = new Department();
+        department.setDep(123);
+        Post post = new Post();
+        post.setPostName("Рабочий");
+        Photo photo = new Photo();
+        photo.setImage("path");
+        User user = new User();
+        user.setFirstName("Андрей");
+        Time time = new Time();
+        time.setDate(LocalDate.now());
+
         Info expected = new Info();
         expected.setPhone("89537356392");
+        expected.setDep(department);
+        expected.setPost(post);
+        expected.setPhoto(photo);
+        expected.setUser(user);
+        expected.setTime(List.of(time));
 
         Mockito.when(infoRepo.save(ArgumentMatchers.any())).thenReturn(expected);
         Info response = registrationService.saveInfo(new Department(), new Post(), new Photo(), new User(), new Time(), "89537356392");
 
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals("89537356392", response.getPhone());
+        Assertions.assertThat(response)
+                .isNotNull()
+                .extracting("dep", "post", "photo", "user", "phone")
+                .contains(department, post, photo, user, "89537356392");
     }
 }

@@ -1,6 +1,6 @@
 package ru.stepchenkov.facedetection.service;
 
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,8 +35,11 @@ class PostServiceTest {
         Mockito.when(postRepo.save(ArgumentMatchers.any())).thenReturn(post);
         Post actual = postService.save(post);
 
-        Assertions.assertNotNull(actual);
-        Assertions.assertEquals("test", actual.getPostName());
+        Assertions.assertThat(actual)
+                .isNotNull()
+                .extracting(Post::getPostName)
+                .isEqualTo("test");
+
     }
 
     @Test
@@ -47,7 +50,8 @@ class PostServiceTest {
 
        String actual = postService.delete("name");
 
-       Assertions.assertNotNull(actual);
-       Assertions.assertEquals(post.getPostName(), actual);
+       Assertions.assertThat(actual)
+               .isNotNull()
+               .isEqualTo(post.getPostName());
     }
 }

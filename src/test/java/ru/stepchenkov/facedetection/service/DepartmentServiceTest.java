@@ -1,6 +1,6 @@
 package ru.stepchenkov.facedetection.service;
 
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,8 +35,10 @@ class DepartmentServiceTest {
         Mockito.when(departmentRepo.save(ArgumentMatchers.any())).thenReturn(dep);
         Department response = departmentService.save(dep);
 
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(143, response.getDep());
+        Assertions.assertThat(response)
+                .isNotNull()
+                .extracting(Department::getDep)
+                .isEqualTo(143);
     }
 
     @Test
@@ -47,6 +49,6 @@ class DepartmentServiceTest {
         Mockito.when(departmentRepo.findByDep(143)).thenReturn(dep);
         int response = departmentService.deleteDepartment(143);
 
-        Assertions.assertEquals(143, response);
+        Assertions.assertThat(response).isEqualTo(143);
     }
 }

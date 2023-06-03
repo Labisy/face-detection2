@@ -18,7 +18,7 @@ public class DepartmentController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity addDepartment(@RequestBody Department department) {
+    public ResponseEntity saveDepartment(@RequestBody Department department) {
         try {
             return new ResponseEntity<>(departmentService.save(department), HttpStatus.OK);
         } catch (DepartmentAlreadyException e) {
