@@ -8,10 +8,10 @@ import java.io.IOException;
 
 public class StartComparing {
 
-    public boolean compareFace(String path1, String path2) {
+    public boolean startComparing(String path1, String path2) {
         // Загрузка фотографий для сравнения
-        Mat image1 = Imgcodecs.imread("path/to/image1.jpg");
-        Mat image2 = Imgcodecs.imread("path/to/image2.jpg");
+        Mat image1 = Imgcodecs.imread(path1);
+        Mat image2 = Imgcodecs.imread(path2);
 
         // Создание объекта класса FaceComparator и сравнение лиц
         FaceComparator comparator = null;

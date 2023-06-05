@@ -1,4 +1,4 @@
-package ru.stepchenkov.facedetection.controller;
+package ru.stepchenkov.facedetection.rest.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import ru.stepchenkov.facedetection.api.ApiControllerTest;
+import ru.stepchenkov.facedetection.rest.api.ApiControllerTest;
 import ru.stepchenkov.rest.entity.Department;
 import ru.stepchenkov.rest.service.DepartmentService;
 

@@ -1,4 +1,4 @@
-package ru.stepchenkov.rest.controller;
+package ru.stepchenkov.rest.controller.rest_controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,11 +1,12 @@
-package ru.stepchenkov.facedetection.controller;
+package ru.stepchenkov.facedetection.rest.controller;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import ru.stepchenkov.facedetection.api.ApiControllerTest;
+import ru.stepchenkov.facedetection.rest.api.ApiControllerTest;
 import ru.stepchenkov.rest.model.RegistrationModel;
 import ru.stepchenkov.rest.service.RegistrationService;
 
@@ -34,6 +35,7 @@ class RegistrationControllerTest extends ApiControllerTest {
     }
 
     @Test
+    @DisplayName("save new Person in database")
     void registration() throws Exception {
         given(service.registration(ArgumentMatchers.any())).willAnswer(invocation -> invocation.getArgument(0));
 

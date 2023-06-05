@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.stepchenkov.rest.entity.Department;
 import ru.stepchenkov.rest.exception.DepartmentAlreadyException;
 import ru.stepchenkov.rest.exception.DepartmentNotFoundException;
+import ru.stepchenkov.rest.model.DepartmentModel;
 import ru.stepchenkov.rest.repo.DepartmentRepo;
+
+import java.util.List;
 
 @Service
 public class DepartmentService {
@@ -23,5 +26,10 @@ public class DepartmentService {
             throw new DepartmentNotFoundException("Такого пользователя не существует");
         departmentRepo.deleteDepartmentByDep(dep);
         return dep;
+    }
+
+    public List<DepartmentModel> getAll() {
+        List<Department> departments = (List<Department>) departmentRepo.findAll();
+        return departments.stream().map(DepartmentModel::toModel).toList();
     }
 }

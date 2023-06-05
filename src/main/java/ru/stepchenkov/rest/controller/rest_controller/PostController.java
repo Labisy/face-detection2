@@ -1,4 +1,4 @@
-package ru.stepchenkov.rest.controller;
+package ru.stepchenkov.rest.controller.rest_controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,5 +32,10 @@ public class PostController {
         } catch (PostNotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity getAllPost() {
+        return new ResponseEntity(postService.getAll(), HttpStatus.OK);
     }
 }

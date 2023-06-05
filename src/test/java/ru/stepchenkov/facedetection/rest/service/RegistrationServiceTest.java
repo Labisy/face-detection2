@@ -1,4 +1,4 @@
-package ru.stepchenkov.facedetection.service;
+package ru.stepchenkov.facedetection.rest.service;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

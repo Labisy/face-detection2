@@ -1,6 +1,5 @@
-package ru.stepchenkov.facedetection.controller;
+package ru.stepchenkov.facedetection.rest.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,12 +9,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import ru.stepchenkov.facedetection.api.ApiControllerTest;
+import ru.stepchenkov.facedetection.rest.api.ApiControllerTest;
 import ru.stepchenkov.rest.entity.Post;
-import ru.stepchenkov.rest.exception.PostAlreadyExistsException;
 import ru.stepchenkov.rest.service.PostService;
 
-public class PostControllerTest extends ApiControllerTest {
+class PostControllerTest extends ApiControllerTest {
 
     @MockBean
     private PostService postService;

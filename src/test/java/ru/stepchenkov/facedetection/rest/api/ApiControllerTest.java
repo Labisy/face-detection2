@@ -1,4 +1,4 @@
-package ru.stepchenkov.facedetection.api;
+package ru.stepchenkov.facedetection.rest.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.extension.ExtendWith;

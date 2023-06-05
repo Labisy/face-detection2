@@ -74,8 +74,8 @@ public class DataService {
             row.createCell(3).setCellValue("Рабочий");
             row.createCell(4).setCellValue("1");
             row.createCell(5).setCellValue(LocalDate.now().toString());
-            row.createCell(6).setCellValue("18:00");
-            row.createCell(7).setCellValue("18:01");
+            row.createCell(6).setCellValue("16:58");
+            row.createCell(7).setCellValue("16:59");
 
             // сохраняем изменения в файл
             FileOutputStream outputStream = new FileOutputStream(fileName);

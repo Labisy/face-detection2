@@ -13,7 +13,7 @@ public class VideoController {
 
     @GetMapping("/streams")
     public ModelAndView getVideoPage(ModelAndView mav) {
-        mav.setViewName("video.html");
+        mav.setViewName("stream2.html");
         return mav;
     }
 

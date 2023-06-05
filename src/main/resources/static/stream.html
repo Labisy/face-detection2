@@ -3,6 +3,7 @@
 <head>
     <title>Видео и информация</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/streamStyle.css"/>
     <style>
         #text-block {
             display: none;
@@ -18,13 +19,15 @@
     <video width="640" height="360" controls>
         <source src="input.mp4" type="video/mp4">
     </video>
-
 </div>
 <div>
     <button id="button">Информация</button>
     <button id="update_button">Обновить</button>
+    <button id="data" onclick="onData()">Таблица посещений</button>
 </div>
-
+<div>
+    <button id="registration" onclick="onRegistration()">Зарегистрировать нового пользователя</button>
+</div>
 <div id="text-block">
     <p>null</p>
 </div>
@@ -54,6 +57,14 @@
         t.innerText = 'Неизвестный пользователь'
         textBlock2.style.display = 'block';
     });
+
+    function onData() {
+        window.location.href = "http://localhost:8080/data";
+    }
+
+    function onRegistration() {
+        window.location.href = "http://localhost:8080/save";
+    }
 </script>
 </body>
 </html>
