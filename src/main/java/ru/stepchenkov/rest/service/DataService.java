@@ -27,7 +27,7 @@ public class DataService {
 
         // создаем объект StringBuilder для генерации HTML-кода
         StringBuilder htmlStringBuilder = new StringBuilder();
-        htmlStringBuilder.append("<html><head><meta charset=\"UTF-8\"><title>Table</title></head><body>");
+        htmlStringBuilder.append("<html><head><meta charset=\"UTF-8\"><title>Table</title><link rel=\"stylesheet\" href=\"style/tableStyle.css\"/></head><body><h2 class=\"title\">Таблица посещений</h2>");
         htmlStringBuilder.append("<table border=1>");
 
         // проходим по всем строкам и столбцам таблицы
