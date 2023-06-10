@@ -24,11 +24,6 @@ body {
     padding: 1.5%;
 }
 
-.text {
-    margin-left: 5%;
-    margin-top: 2%;
-}
-
 .inputInDown {
     margin-left: 20%;
     margin-top: 2%;
@@ -43,8 +38,11 @@ form {
 .down {
     display: flex;
     flex-direction: column;
-    margin-top: 2%;
+    margin-top: 0.5%;
     margin-left: 5%;
+    border: #1c364a solid;
+    border-radius: 20px;
+    padding: 1.5%;
 }
 
 label {
