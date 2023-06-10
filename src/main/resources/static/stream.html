@@ -4,36 +4,38 @@
     <title>Видео и информация</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/streamStyle.css"/>
-    <style>
-        #text-block {
-            display: none;
-        }
-
-        #text-block2 {
-            display: none;
-        }
-    </style>
 </head>
 <body>
-<div class="video-container">
-    <video width="640" height="360" controls>
-        <source src="input.mp4" type="video/mp4">
-    </video>
-</div>
-<div>
-    <button id="button">Информация</button>
-    <button id="update_button">Обновить</button>
-    <button id="data" onclick="onData()">Таблица посещений</button>
-</div>
-<div>
-    <button id="registration" onclick="onRegistration()">Зарегистрировать нового пользователя</button>
-</div>
-<div id="text-block">
-    <p>null</p>
-</div>
-<div id="text-block2">
-    <p id="in_text"></p>
-</div>
+<main>
+    <div class="in">
+        <div class="text">
+            <p class="welcome_text">
+                Памятка<br><br>
+                * "Получение информации" - происходит по нажатии на кнопку "Информация"<br><br>
+                * "Обновить данные" - происходит по нажатии на кнопку "Обновить"<br><br>
+                * "Для получения таблицы" - нажмите на кнопку "Таблица"<br><br>
+                * "Регистрация нового пользователя" - нажмите на кнопку "Регистрация"
+            </p>
+        </div>
+
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="input.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+
+    <div class="buttons">
+        <button id="info"><p>Информация</p>></button>
+        <button id="update"><p>Обновить</p></button>
+        <button id="data" onclick="onData()"><p>Таблица</p></button>
+        <button id="registration" onclick="onRegistration()"><p>Регистрация</p></button>
+    </div>
+</main>
+<footer>
+    <div id="text-block"><p>Окно вывода информации</p></div>
+</footer>
 
 <script>
     const showTextButton = document.getElementById('button');

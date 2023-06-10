@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.stepchenkov.rest.entity.Department;
-import ru.stepchenkov.rest.exception.DepartmentAlreadyException;
+import ru.stepchenkov.rest.exception.DepartmentAlreadyExistsException;
 import ru.stepchenkov.rest.exception.DepartmentNotFoundException;
 import ru.stepchenkov.rest.service.DepartmentService;
 
@@ -21,7 +21,7 @@ public class DepartmentController {
     public ResponseEntity saveDepartment(@RequestBody Department department) {
         try {
             return new ResponseEntity<>(departmentService.save(department), HttpStatus.OK);
-        } catch (DepartmentAlreadyException e) {
+        } catch (DepartmentAlreadyExistsException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

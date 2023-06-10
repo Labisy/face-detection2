@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import ru.stepchenkov.rest.entity.Department;
-import ru.stepchenkov.rest.exception.DepartmentAlreadyException;
+import ru.stepchenkov.rest.exception.DepartmentAlreadyExistsException;
 import ru.stepchenkov.rest.exception.DepartmentNotFoundException;
 import ru.stepchenkov.rest.repo.DepartmentRepo;
 import ru.stepchenkov.rest.service.DepartmentService;
@@ -30,7 +30,7 @@ class DepartmentServiceTest {
 
     @Test
     @DisplayName("save department into database")
-    void saveTest() throws DepartmentAlreadyException {
+    void saveTest() throws DepartmentAlreadyExistsException {
 
         Mockito.when(departmentRepo.save(ArgumentMatchers.any())).thenReturn(dep);
         Department response = departmentService.save(dep);

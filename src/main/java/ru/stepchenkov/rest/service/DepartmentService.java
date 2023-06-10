@@ -3,7 +3,7 @@ package ru.stepchenkov.rest.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.stepchenkov.rest.entity.Department;
-import ru.stepchenkov.rest.exception.DepartmentAlreadyException;
+import ru.stepchenkov.rest.exception.DepartmentAlreadyExistsException;
 import ru.stepchenkov.rest.exception.DepartmentNotFoundException;
 import ru.stepchenkov.rest.model.DepartmentModel;
 import ru.stepchenkov.rest.repo.DepartmentRepo;
@@ -15,9 +15,9 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepo departmentRepo;
 
-    public Department save(Department department) throws DepartmentAlreadyException {
+    public Department save(Department department) throws DepartmentAlreadyExistsException {
         if (departmentRepo.findByDep(department.getDep()) != null)
-            throw new DepartmentAlreadyException("Такой отдел уже создан");
+            throw new DepartmentAlreadyExistsException("Такой отдел уже создан");
         return departmentRepo.save(department);
     }
 
