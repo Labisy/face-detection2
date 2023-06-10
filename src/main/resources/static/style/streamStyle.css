@@ -10,7 +10,7 @@ p {
 .in {
     display: flex;
     justify-content: center;
-    border: 3px solid #FFFFF0;
+    border: #1c364a solid;
     border-radius: 20px;
     margin-left: 15%;
     margin-top: 5%;
@@ -21,13 +21,14 @@ p {
 .welcome_text {
     font-size: 20px;
     font-family: "Arial", sans-serif;
+    border: #1c364a solid;
     padding: 10px;
+    border-radius: 20px;
 }
 
 .text {
     margin: 50px;
     height: 340px;
-    background-color: #1c364a;
     border: 3px;
     border-radius: 20px;
 }
@@ -55,8 +56,6 @@ p {
 }
 
 #text-block {
-    border: 3px solid #FFFFF0;
-    border-radius: 20px;
     width: 500px;
     height: 150px;
     padding: 20px;

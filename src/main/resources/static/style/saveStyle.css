@@ -10,10 +10,15 @@ body {
     margin-top: 2%;
 }
 
-.title {
-    margin-left: 5%;
-    margin-top: 2%;
+.wrapperForm {
     border: #1c364a solid;
+    border-radius: 20px;
+    padding: 1.5%;
+}
+
+.title {
+    margin-left: 4%;
+    margin-top: 2%;
     width: 350px;
     height: 25px;
     padding: 1.5%;
@@ -68,6 +73,7 @@ input {
 select {
     background-color: #161a1e;
     border: #1c364a solid;
+    border-radius: 5px;
 }
 
 #registrationButton {
