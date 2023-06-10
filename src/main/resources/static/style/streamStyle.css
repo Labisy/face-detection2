@@ -46,6 +46,8 @@ p {
     background-color: #161a1e;
     font-family: "Arial", sans-serif;
     cursor: pointer;
+    border: #1c364a solid;
+    border-radius: 5px;
 }
 
 .video-container {

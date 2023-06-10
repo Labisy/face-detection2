@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"></script>
     <title>Регистрация</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/saveStyle.css"/>
 </head>
 <body>
-<h2>Добавление нового сотрудника</h2>
+<h2 class="title">Добавление нового сотрудника</h2>
 <div class="wrapper">
     <form>
         <label for="firstName">Имя:</label>
@@ -34,17 +34,18 @@
 
         <label for="photo">Фото:</label>
         <input type="text" id="photo" name="photo">
-
-        <input type="submit" value="Добавить" id='registrationButton' onclick="sendData()">
-        <input type="submit" value="Добавить должность или отдел" id='onAdd' onclick="addData()">
-        <input type="submit" value="Назад" id='back' onclick="onBack()">
     </form>
+    <div class="down">
+        <label class="text">
+            <textarea rows="10" cols="30" disabled id="textArea">Окно вывода результата сохранения</textarea>
+        </label>
+        <form class="inputInDown">
+            <input type="submit" value="Добавить" id='registrationButton' onclick="sendData()">
+            <input type="submit" value="Добавить должность или отдел" id='onAdd' onclick="addData()">
+            <input type="submit" value="Назад" id='back' onclick="onBack()">
+        </form>
+    </div>
 </div>
-
-<label>
-    <textarea rows="10" cols="30" disabled id="textArea"></textarea>
-</label>
->
 
 <script>
     const textArea = document.getElementById("textArea");
@@ -57,7 +58,7 @@
     const phoneNum = document.getElementById('phone');
     const pPath = document.getElementById('photo');
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#phone').inputmask('+7 (999) 999-99-99');
     });
 
@@ -90,7 +91,7 @@
     });
 
     function sendData() {
-       document.getElementById('textArea').innerText = "Регистрация прошла успешно"
+        document.getElementById('textArea').innerText = "Регистрация прошла успешно"
     }
 
     function postData(url = '', data = {}) {

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<title>Добавление нового отдела и должности</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style/addStyle.css">
-	</head>
-	<body>
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<title>Добавление нового отдела и должности</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style/addStyle.css">
+</head>
+<body>
+<main class="wrapper">
+	<div class="wrapperAdd">
 		<h2>Добавление нового отдела</h2>
-		<form>
+		<form class="f1">
 			<label for="department-name">Название отдела:</label><br>
 			<input type="text" id="department-name" name="department-name"><br><br>
 			<input type="submit" value="Добавить" id='addDepartment' onclick="addDepartment()">
 		</form>
-		
 		<h2>Добавление новой должности</h2>
-		<form>
+		<form class="f2">
 			<label for="position-name">Название должности:</label><br>
 			<input type="text" id="position-name" name="position-name"><br><br>
 			<input type="submit" value="Добавить" id='addPost' onclick="addPost()">
 		</form>
+	</div>
+	<div class="wrapperResult">
 		<h2>Список отделов и должностей</h2>
 		<label>
 			<textarea rows="10" cols="30" disabled id="textArea1">
@@ -32,87 +35,92 @@
 		<div>
 			<input type="submit" value="Обновить" onclick="sendRequest()" id="update">
 		</div>
+	</div>
+</main>
 
-		<script>
-			const textArea1 = document.getElementById("textArea1");
-			const textArea2 = document.getElementById("textArea2");
-			function sendRequest() {
-				sendPost();
-				sendDepartment();
-			}
+<script>
+	const textArea1 = document.getElementById("textArea1");
+	const textArea2 = document.getElementById("textArea2");
 
-			function addPost() {
-				let postName = document.getElementById('position-name').value;
-				let data = {
-					post: postName
-				};
-				if (postName !== null) {
-					console.log(data)
-					postData('http://localhost:8080/post/save', data)
-							.then(data => {
-								let result = document.getElementById('textArea1');
-								result.value = "должность сохранена";
-								console.log(JSON.stringify(data));
-							})
-				}
-			}
+	function sendRequest() {
+		sendPost();
+		sendDepartment();
+	}
 
-			function addDepartment() {
-				let dep = document.getElementById('department-name').value;
-				let data = {
-					dep: dep
-				};
-				if (dep !== null) {
-					console.log(data)
-					postData('http://localhost:8080/department/save', data)
-							.then(data => {
-								let result = document.getElementById('textArea2');
-								result.value = "Отдел";
-								console.log(JSON.stringify(data));
-							})
-				}
-			}
-			function sendPost() {
-				fetch('http://localhost:8080/post/getAll')
-						.then(response => response.json())
-						.then(data => {
-							// обрабатываем полученные данные
-							let output = "";
-							data.forEach(item => {
-								output += `Должность: ${item.postName}\n`;
-							});
-							textArea1.textContent = output; // выводим данные в textarea
-						})
-						.catch(error => console.error(error));
-			}
-			function sendDepartment() {
-				fetch('http://localhost:8080/department/getAll')
-						.then(response => response.json())
-						.then(data => {
-							// обрабатываем полученные данные
-							let output = "";
-							data.forEach(item => {
-								output += `Отдел: ${item.department}\n`;
-							});
-							textArea2.textContent = output; // выводим данные в textarea
-						})
-						.catch(error => console.error(error));
-			}
+	function addPost() {
+		let postName = document.getElementById('position-name').value;
+		let data = {
+			post: postName
+		};
+		if (postName !== null) {
+			console.log(data)
+			postData('http://localhost:8080/post/save', data)
+					.then(data => {
+						let result = document.getElementById('textArea1');
+						result.value = "должность сохранена";
+						console.log(JSON.stringify(data));
+					})
+		}
+	}
 
-			function postData(url = '', data = {}) {
-				return fetch(url, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(data)
+	function addDepartment() {
+		let dep = document.getElementById('department-name').value;
+		let data = {
+			dep: dep
+		};
+		if (dep !== null) {
+			console.log(data)
+			postData('http://localhost:8080/department/save', data)
+					.then(data => {
+						let result = document.getElementById('textArea2');
+						result.value = "Отдел";
+						console.log(JSON.stringify(data));
+					})
+		}
+	}
+
+	function sendPost() {
+		fetch('http://localhost:8080/post/getAll')
+				.then(response => response.json())
+				.then(data => {
+					// обрабатываем полученные данные
+					let output = "";
+					data.forEach(item => {
+						output += `Должность: ${item.postName}\n`;
+					});
+					textArea1.textContent = output; // выводим данные в textarea
 				})
-						.then(response => response.json());
-			}
+				.catch(error => console.error(error));
+	}
 
-			document.addEventListener('DOMContentLoaded', () => {
-				sendRequest()
-			})
-		</script>
-	</body>
+	function sendDepartment() {
+		fetch('http://localhost:8080/department/getAll')
+				.then(response => response.json())
+				.then(data => {
+					// обрабатываем полученные данные
+					let output = "";
+					data.forEach(item => {
+						output += `Отдел: ${item.department}\n`;
+					});
+					textArea2.textContent = output; // выводим данные в textarea
+				})
+				.catch(error => console.error(error));
+	}
+
+	function postData(url = '', data = {}) {
+		return fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+				.then(response => response.json());
+	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+		sendRequest()
+	})
+</script>
+</body>
 </html>

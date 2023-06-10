@@ -1,7 +1,45 @@
+body {
+    background-color: #0e1b25;
+    color: #FFFFF0;
+    font-family: Arial sans-serif;
+}
+
+.wrapper {
+    display:  flex;
+    margin: 5%;
+    margin-top: 2%;
+}
+
+.title {
+    margin-left: 5%;
+    margin-top: 2%;
+    border: #1c364a solid;
+    width: 350px;
+    height: 25px;
+    padding: 1.5%;
+}
+
+.text {
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.inputInDown {
+    margin-left: 20%;
+    margin-top: 2%;
+}
+
 form {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+}
+
+.down {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    margin-left: 5%;
 }
 
 label {
@@ -17,24 +55,27 @@ select {
 
 input {
     padding: 5px;
-    border: 1px solid silver;
+    border: #1c364a solid;
     border-radius: 5px;
     width: 300px;
     margin-bottom: 5px;
     font-size: 1.2rem;
     outline: none;
+    background-color: #161a1e;
+
 }
 
-button:hover {
-    background-color: #27ae60;
+select {
+    background-color: #161a1e;
+    border: #1c364a solid;
 }
 
 #registrationButton {
     padding: 10px;
     margin-top: 20px;
-    background-color: #2ecc71;
+    background-color: #161a1e;
     color: white;
-    border: none;
+    border: #1c364a solid;
     border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
@@ -43,9 +84,9 @@ button:hover {
 #onAdd, #back {
     padding: 10px;
     margin-top: 10px;
-    background-color: #2ecc71;
+    background-color: #161a1e;
     color: white;
-    border: none;
+    border: #1c364a solid;
     border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
