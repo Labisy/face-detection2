@@ -1,6 +1,6 @@
 body {
-    background-color: #0e1b25;
-    color: #FFFFF0;
+    background-color: #DCDCDC;
+    color: black;
     font-family: Arial sans-serif;
 }
 
@@ -63,6 +63,7 @@ input {
     width: 300px;
     margin-bottom: 5px;
     font-size: 1.2rem;
+    color: white;
     outline: none;
     background-color: #161a1e;
 
@@ -71,6 +72,7 @@ input {
 select {
     background-color: #161a1e;
     border: #1c364a solid;
+    color: white;
     border-radius: 5px;
 }
 

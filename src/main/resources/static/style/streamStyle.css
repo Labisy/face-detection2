@@ -1,9 +1,9 @@
 body {
-    background-color: #0e1b25;
+    background-color: #DCDCDC;
 }
 
 p {
-    color:  #FFFFF0;
+    color:  black;
     font-family: "Arial", sans-serif;
 }
 
@@ -44,7 +44,7 @@ p {
     margin-bottom: 20px;
     width: 250px;
     height: 50px;
-    background-color: #161a1e;
+    background-color: #DCDCDC;
     font-family: "Arial", sans-serif;
     cursor: pointer;
     border: #1c364a solid;
